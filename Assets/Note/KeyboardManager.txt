@@ -1,0 +1,13 @@
+# Assets/Black Whale Studio/Scripts/KeyboardManager.cs
+
+line 62: [SerializeField] private TMP_InputField outputField;
+    Change
+    '''
+    publiv TMP_InputField outputField;
+    '''
+
+line 82: CheckTexLength();
+    Add
+    '''
+    if(outputField != null)
+    '''
