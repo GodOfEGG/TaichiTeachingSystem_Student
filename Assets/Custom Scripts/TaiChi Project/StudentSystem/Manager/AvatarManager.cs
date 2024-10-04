@@ -11,8 +11,8 @@ namespace TaichiTeachingSystem{
         {
             [Header("===Record Mode Avatar===")]
             [SerializeField] private GameObject _recordAvatars;
-            private Animator _recordAnimator;
-            private HumanPoseHandler _recordPoseHandler;
+            private List<Animator> _recordAnimators;
+            private List<HumanPoseHandler> _recordPoseHandlers;
             private HumanPose _recordPose;
 
 
@@ -29,6 +29,17 @@ namespace TaichiTeachingSystem{
             private HumanPose _play_duo_modifyPose;
 
 
+            void Start(){
+                // For record Avatars
+                _recordAnimators = new List<Animator>();
+                _recordPoseHandlers = new List<HumanPoseHandler>();
+                for(int ID = 0 ; ID< _recordAvatars.transform.childCount ; ID++){
+                    _recordAnimators.Add(_recordAvatars.transform.GetChild(ID).GetChild(0).GetComponent<Animator>());
+                    _recordPoseHandlers.Add(new HumanPoseHandler(_recordAnimators[ID].avatar, _recordAnimators[ID].transform));
+                }
+                _recordPose = new HumanPose();
+
+            }
             
             /////////////////////////////////////////////////////////////////
             ////////////////////   Tools   //////////////////////////////////
@@ -65,9 +76,8 @@ namespace TaichiTeachingSystem{
             /////////////////////////////////////////////////////////////////
                 
             public void GetRecordMuscleValue(ref MuscleValues tmpValue){
-                _RefAvatarPose(_recordAvatars, 0, ref _recordAnimator, ref _recordPose, ref _recordPoseHandler);
                 tmpValue.muscleValues = new float[_recordPose.muscles.Length];
-                _recordPoseHandler.GetHumanPose(ref _recordPose);
+                _recordPoseHandlers[0].GetHumanPose(ref _recordPose);
                 for (int i = 0; i < _recordPose.muscles.Length; ++i)
                     tmpValue.muscleValues[i] = _recordPose.muscles[i];
 
@@ -85,14 +95,11 @@ namespace TaichiTeachingSystem{
 
             public void SetRecordAvatarsPose(){
                 // Mocopi motion data are sent to RecordAvatar_Front
-                _RefAvatarPose(_recordAvatars, 0, ref _recordAnimator, ref _recordPose, ref _recordPoseHandler);
-                _recordPoseHandler.GetHumanPose(ref _recordPose);
+                _recordPoseHandlers[0].GetHumanPose(ref _recordPose);
 
                 // Copy the pose of RecordAvatar_Front to other RecordAvatars
                 for(int ID = 1 ; ID< _recordAvatars.transform.childCount ; ID++){
-                    Animator tmpAnimator = _recordAvatars.transform.GetChild(ID).GetChild(0).GetComponent<Animator>();
-                    HumanPoseHandler tmpHandler = new HumanPoseHandler(tmpAnimator.avatar, tmpAnimator.transform);
-                    tmpHandler.SetHumanPose(ref _recordPose);
+                    _recordPoseHandlers[ID].SetHumanPose(ref _recordPose);
                 }
             }
 

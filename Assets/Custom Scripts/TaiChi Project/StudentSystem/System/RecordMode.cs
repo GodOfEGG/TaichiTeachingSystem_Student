@@ -77,15 +77,15 @@ namespace TaichiTeachingSystem{
                 _frameID += 1;
             }
 
-            //////////////////////////////////////////////////////
-            ////////////////   For UI Panels  //////////////////
-            /////////////////////////////////////////////////////
-            
             public void SetFPS(){
                 _FPS = _framePanelManager.GetFPS();
                 _fpsDeltaTime = 1/_FPS;
                 _coachManager.SetCoachSpeed();
             }
+
+            //////////////////////////////////////////////////////
+            ////////////////   Record Button  //////////////////
+            /////////////////////////////////////////////////////
 
 
             public void ChangeRecordingState(){
@@ -136,6 +136,10 @@ namespace TaichiTeachingSystem{
                 _recordPanelManager.SetRecordCountdownPanelActive(false);
 
             }
+
+            //////////////////////////////////////////////////////
+            ////////////////   Upload Button  //////////////////
+            /////////////////////////////////////////////////////
 
             IEnumerator _SetCoachIdDropdown(){
                 string accessToken = _loginManager.GetAccessToken();
