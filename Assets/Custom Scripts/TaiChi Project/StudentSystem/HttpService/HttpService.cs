@@ -13,8 +13,11 @@ namespace TaichiTeachingSystem{
     namespace StudentSystem{
         public class HttpService : MonoBehaviour
         {
-            public static string base_url = "https://127.0.0.1:4433";
+            public static string base_url = "https://172.20.10.4:4433";
 
+            public static void SetBaseUrl(string p_ip){
+                base_url = $"https://{p_ip}:4433";
+            }
             private static string _GetApiUrl(string api_url)
             {
                 return $"{base_url}{api_url}";

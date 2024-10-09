@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Keyboard;
 using TMPro;
-using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 
 namespace TaichiTeachingSystem{
@@ -25,10 +24,10 @@ namespace TaichiTeachingSystem{
             }
             public void SetKeyboardOutputField(string p_outputFieldName){
                 if(p_outputFieldName == "Email"){
-                    _keyboardManager.outputField = _emailInputField;
+                    _keyboardManager.SetOutputField(_emailInputField);
                 }
                 else if(p_outputFieldName == "Password"){
-                    _keyboardManager.outputField = _passwordInputField;
+                    _keyboardManager.SetOutputField(_passwordInputField);
                 } 
 
             }

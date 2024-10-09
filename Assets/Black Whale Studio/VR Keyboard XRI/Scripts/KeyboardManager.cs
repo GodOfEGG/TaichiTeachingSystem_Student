@@ -323,5 +323,10 @@ namespace Keyboard
 
             shiftButton.colors = shiftButtonColors;
         }
+        public void SetOutputField(TMP_InputField p_outputField){
+            outputField = p_outputField;
+            outputField.selectionAnchorPosition = outputField.selectionFocusPosition = outputField.text.Length;
+            CheckTextLength();
+        }
     }
 }
