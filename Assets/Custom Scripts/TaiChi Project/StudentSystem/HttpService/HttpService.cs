@@ -54,6 +54,7 @@ namespace TaichiTeachingSystem{
                     _accessToken = _GetAccessToken(tokenRequest);
                     yield break;
                 }
+                _accessToken = null;
                 Debug.LogError("Error getting token: " + tokenRequest.error);
             }
             public static string GetAccessToken(){

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Mocopi.Receiver;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,11 +16,9 @@ namespace TaichiTeachingSystem{
             [SerializeField] private FramePanelManager _framePanelManager;
             [SerializeField] private PlayPanelManager _playPanelManager;
             [SerializeField] private CoachManager _coachManager;
-            [SerializeField] private LoginManager _loginManager;
 
             private bool _onPlay = false;
             private bool _singleAvatarMode = true;
-            private bool _pauseAtModifyPose = true;
             private bool _indicatorActive = false;
             private int _frameID = 0;
             private int _modifyDataIndex;
@@ -33,7 +32,10 @@ namespace TaichiTeachingSystem{
             private float _updateTimer = 0f;
 
             
-
+            void Awake(){
+                _avatarManager.InstantiatePlayModeAvatars();
+                _indicatorManager.SetIndicatorsBodyPart();
+            }
 
             //////////////////////////////////////////////////////
             ////////////   For StudentTaichiSystem  //////////////
@@ -43,7 +45,6 @@ namespace TaichiTeachingSystem{
                 if(_onPlay)
                     SwitchOnPlay();
                 _singleAvatarMode = true;
-                _pauseAtModifyPose = true;
 
                 // Indicator
                 SetIndicatorActive();
@@ -92,6 +93,10 @@ namespace TaichiTeachingSystem{
 
             private void _DoPlay()
             {
+                // Restart coach avatar if user avatar restart 
+                if(_frameID == 0){
+                    _coachManager.RestartCoachMove();
+                }
                 // if this frame has modified Data
                 if (_modifyDataIndex>=0 && _modifyData[_modifyDataIndex].frameID == _frameID){            
                     // Avatar Pose
@@ -101,13 +106,8 @@ namespace TaichiTeachingSystem{
                     if(_indicatorActive){
                         _indicatorManager.SetIndicatorTransform();                    
                     }
-                    if(_pauseAtModifyPose){
-                        _indicatorManager.SetIndicatorMaterial(_modifyData[_modifyDataIndex].modifiedBodyParts);             
-                        SwitchOnPlay();
-                    }
-                    else{
-                        _frameID = (_frameID + 1)%_originData.Length;
-                    }
+                    _indicatorManager.SetIndicatorMaterial(_modifyData[_modifyDataIndex].modifiedBodyParts);             
+                    SwitchOnPlay();
                 
                 }
                 else{
@@ -136,8 +136,8 @@ namespace TaichiTeachingSystem{
 
 
             IEnumerator _SetModifiedFileDropdown(){
-                string accessToken = _loginManager.GetAccessToken();
-                int userId = _loginManager.GetUserId();
+                string accessToken = PlayerPrefs.GetString("AccessToken");
+                int userId = PlayerPrefs.GetInt("UserId");
                 yield return StartCoroutine(HttpService.Get_MotionDataByUserId(userId, accessToken));
                 List<MotionRecord> motionRecordList = HttpService.GetMotionRecordList();
                 _playPanelManager.SetModifiedDataFileDropdown(motionRecordList);
@@ -149,7 +149,7 @@ namespace TaichiTeachingSystem{
             }
             IEnumerator _LoadModifiedData(){
                 string filename = _playPanelManager.GetModifiedDataFilename();
-                string accessToken = _loginManager.GetAccessToken();
+                string accessToken = PlayerPrefs.GetString("AccessToken");
                 yield return StartCoroutine(HttpService.Get_MotionDataLoad(filename, accessToken));
                 _motionData = HttpService.GetMotionData();
                 if(_motionData == null){
@@ -222,9 +222,7 @@ namespace TaichiTeachingSystem{
                 _avatarManager.SetSingleAvatarPose( _playPanelManager.GetOriginPoseToggleIsOn());
                 _indicatorManager.SetIndicatorActive(_indicatorActive, _singleAvatarMode, _playPanelManager.GetOriginPoseToggleIsOn());
             }
-            public void SetPauseAtModifyPose(){
-                _pauseAtModifyPose = _playPanelManager.GetPauseAtModifieddPoseToggleIsOn();
-            }
+
         }
     }
 }

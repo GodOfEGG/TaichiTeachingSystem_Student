@@ -134,7 +134,6 @@ namespace Keyboard
             {
                 textToInsert = key.ToLower();
             }
-
             int startPos = Mathf.Min(outputField.selectionAnchorPosition, outputField.selectionFocusPosition);
             int endPos = Mathf.Max(outputField.selectionAnchorPosition, outputField.selectionFocusPosition);
 
@@ -142,6 +141,7 @@ namespace Keyboard
             outputField.text = outputField.text.Insert(startPos, textToInsert);
 
             outputField.selectionAnchorPosition = outputField.selectionFocusPosition = startPos + textToInsert.Length;
+
 
             if (isFirstKeyPress)
             {
@@ -325,7 +325,8 @@ namespace Keyboard
         }
         public void SetOutputField(TMP_InputField p_outputField){
             outputField = p_outputField;
-            outputField.selectionAnchorPosition = outputField.selectionFocusPosition = outputField.text.Length;
+
+            outputField.MoveTextEnd(shiftActive);
             CheckTextLength();
         }
     }

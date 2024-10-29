@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Text;
-using System.IO;
+using Mocopi.Receiver;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,9 +14,10 @@ namespace TaichiTeachingSystem{
             [SerializeField] private FramePanelManager _framePanelManager;
             [SerializeField] private RecordPanelManager _recordPanelManager;
             [SerializeField] private CoachManager _coachManager;
-            [SerializeField] private LoginManager _loginManager;
+            [SerializeField] private MocopiSimpleReceiver _mocopiSimpleReceiver;
 
             private bool _onRecording = false;
+            private bool _inProcess = false;
             private int _frameID;
             
 
@@ -27,7 +27,15 @@ namespace TaichiTeachingSystem{
             private float _updateTimer = 0f;
 
 
+            void Awake(){
+                _avatarManager.InstantiateRecordModeAvatars();
 
+                // Set the first record avatar as the mocopi receiver
+                GameObject avatar = _avatarManager.GetFirstRecordAvatar();
+                avatar.AddComponent<MocopiAvatar>();
+                _mocopiSimpleReceiver.AvatarSettings[0].MocopiAvatar = avatar.GetComponent<MocopiAvatar>();
+                _mocopiSimpleReceiver.enabled = true;
+            }
             //////////////////////////////////////////////////////
             ////////////   For StudentTaichiSystem  //////////////
             /////////////////////////////////////////////////////
@@ -47,6 +55,9 @@ namespace TaichiTeachingSystem{
             }
             public void Run(){
                 _avatarManager.SetRecordAvatarsPose();
+                if(OVRInput.GetDown(OVRInput.Button.One)){
+                    ChangeRecordingState();
+                }
                 if(!_onRecording)
                     return;
 
@@ -91,11 +102,12 @@ namespace TaichiTeachingSystem{
             public void ChangeRecordingState(){
 
                 // Start Recording
-                if(!_onRecording){
+                if(!_onRecording && !_inProcess){
+                    _inProcess=true;
                     StartCoroutine(_StartRecording());
                 }
                 //Stop Recording
-                else{
+                else if(!_inProcess){
                     _recordPanelManager.SetRecordDataBufferActive(true, _motionData.motionFrames.Count);
                     _framePanelManager.SetFpsSliderInteractable(true);
                     _onRecording = !_onRecording;
@@ -117,7 +129,6 @@ namespace TaichiTeachingSystem{
                 _framePanelManager.SetFpsSliderInteractable(false);
 
                 yield return StartCoroutine(_StartRecordingCountdown());
-                _onRecording = !_onRecording;
                 _coachManager.SetCoachSpeed();
                 _recordPanelManager.SetRecordingButton(_onRecording);
             }
@@ -134,6 +145,8 @@ namespace TaichiTeachingSystem{
                 yield return new WaitForSeconds(1);
 
                 _recordPanelManager.SetRecordCountdownPanelActive(false);
+                _onRecording = true;
+                _inProcess = false;
 
             }
 
@@ -142,7 +155,7 @@ namespace TaichiTeachingSystem{
             /////////////////////////////////////////////////////
 
             IEnumerator _SetCoachIdDropdown(){
-                string accessToken = _loginManager.GetAccessToken();
+                string accessToken = PlayerPrefs.GetString("AccessToken");
                 yield return StartCoroutine(HttpService.Get_CoachAll(accessToken));
 
                 List<CoachData> coachDataList = HttpService.GetCoachDataList();
@@ -163,9 +176,9 @@ namespace TaichiTeachingSystem{
                 _recordPanelManager.SetUploadResultText(uploadSuccess);
             }
             public void UploadRecordData(){
-                string accessToken = _loginManager.GetAccessToken();
+                string accessToken = PlayerPrefs.GetString("AccessToken");
                 _motionData.coachId = _recordPanelManager.GetCoachId();
-                _motionData.userId = _loginManager.GetUserId();
+                _motionData.userId = PlayerPrefs.GetInt("UserId");;
                 StartCoroutine(_UploadHandler(_motionData, accessToken));
             }
         }

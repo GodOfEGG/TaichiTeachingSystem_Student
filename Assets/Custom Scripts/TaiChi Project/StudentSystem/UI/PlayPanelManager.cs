@@ -26,7 +26,6 @@ namespace TaichiTeachingSystem{
 
 
             [Header("===Setting===")]
-            [SerializeField] private Toggle _pauseAtModifyPoseToggle;
             [SerializeField] private Toggle _indicatorToggle;
             [SerializeField] private Toggle _originPoseToggle;
             [SerializeField] private Toggle _modifyPoseToggle;
@@ -91,9 +90,6 @@ namespace TaichiTeachingSystem{
                 this.transform.gameObject.SetActive(p_active);
             }
 
-            public bool GetPauseAtModifieddPoseToggleIsOn(){
-                return _pauseAtModifyPoseToggle.isOn;
-            }
 
             public bool GetIndicatorToggleIsOn(){
                 return _indicatorToggle.isOn;

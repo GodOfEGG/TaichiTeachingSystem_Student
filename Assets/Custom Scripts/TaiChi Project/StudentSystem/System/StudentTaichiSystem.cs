@@ -50,6 +50,19 @@ namespace TaichiTeachingSystem
                         break;
                 }
             }
+            public void SetFPS(){
+                switch (_modeDropdown.value){
+                    // Record Mode
+                    case 0:
+                        _recordMode.SetFPS();
+                        break;
+
+                    // Play Mode
+                    case 1:
+                        _playMode.SetFPS();
+                        break;
+                }
+            }
 
         }
 

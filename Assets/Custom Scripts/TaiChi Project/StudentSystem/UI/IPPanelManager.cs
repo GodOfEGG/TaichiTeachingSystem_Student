@@ -10,16 +10,15 @@ namespace TaichiTeachingSystem{
         {
             [SerializeField] private GameObject _ipPanel;
             [SerializeField] private TMP_InputField _ipInputField;
-            [SerializeField] private KeyboardManager _keyboardManager;
 
-            public void SetServerIP(){
-                HttpService.SetBaseUrl(_ipInputField.text);
+            public string GetIPInputField(){
+                return _ipInputField.text;
+            }
+            public void SetIPInputField(string p_IP){
+                _ipInputField.text = p_IP;
             }
             public void SetIPPanelActive(bool p_active){
                 _ipPanel.SetActive(p_active);
-            }
-            public void SetKeyboardOutputField(){
-                _keyboardManager.SetOutputField(_ipInputField);
             }
         }
     }

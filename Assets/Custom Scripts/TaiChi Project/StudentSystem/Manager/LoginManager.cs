@@ -1,34 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Text;
 using UnityEngine;
 
 namespace TaichiTeachingSystem{
     namespace StudentSystem{
         public class LoginManager : MonoBehaviour
         {
-            [SerializeField] private GameObject _mainSystem;
             [SerializeField] private LoginPanelManager _loginPanelManager;
             [SerializeField] private CreateUserPanelManager _createUserPanelManager;
+            [SerializeField] private IPPanelManager _ipPanelManager;
             [SerializeField] private GameObject _loginCanvas;
+            [SerializeField] private GameObject _avatarSelection;
             private int _userId;
             private string _username;
             private string _password;
             private string _email;
             private string _accessToken;
+
             void Start(){
-                _mainSystem.SetActive(false);
+                _SetRememberMe();
+
+                // Set serverIP if there's ip value stored in PlayerPrefs
+                if(PlayerPrefs.HasKey("ServerIP"))
+                    _ipPanelManager.SetIPInputField(PlayerPrefs.GetString("ServerIP"));
+                SetServerIP();
             }
 
-            public int GetUserId(){
-                return _userId;
+            private void _SetRememberMe(){
+                if (PlayerPrefs.HasKey("RememberMe") && PlayerPrefs.GetInt("RememberMe") == 1)
+                {
+                    _loginPanelManager.SetEmailInputField(PlayerPrefs.GetString("Email"));
+                    _loginPanelManager.SetPasswordInputField(PlayerPrefs.GetString("Password"));
+                    _loginPanelManager.SetRememberMeToggle(true);
+                }
+                else
+                {
+                    _loginPanelManager.SetRememberMeToggle(false);
+                }
             }
-            public string GetUsername(){
-                return _username;
-            }
-            public string GetAccessToken(){
-                return _accessToken;
-            }
+
+            public void SetServerIP(){
+                string serverIP = _ipPanelManager.GetIPInputField();
+                HttpService.SetBaseUrl(serverIP);
+                PlayerPrefs.SetString("ServerIP", serverIP);
+            }        
+
 
             public void Login(){
                 StartCoroutine(_HandleLogin());
@@ -37,18 +53,36 @@ namespace TaichiTeachingSystem{
                 _email = _loginPanelManager.GetEmail();
                 _password = _loginPanelManager.GetPassword();
                 yield return StartCoroutine(HttpService.GetUserAccessToken(_email, _password));
-
                 _accessToken = HttpService.GetAccessToken();
                 if(_accessToken == null){
-                    Debug.LogError("Login Failed");
+                    _loginPanelManager.SetErrorMsgPanelActive(true);
+                    _loginPanelManager.SetErrorMsgText("Login Failed!");
                 }
                 else{
+                    // Save Email and Passwrd is remember me is set
+                    if (_loginPanelManager.GetRememberMeToggle())
+                    {
+                        PlayerPrefs.SetString("Email", _email);
+                        PlayerPrefs.SetString("Password", _password); // 請注意，這裡的密碼是明文保存，應該進行加密
+                        PlayerPrefs.SetInt("RememberMe", 1);
+                    }
+                    else
+                    {
+                        // 清除之前保存的帳號和密碼
+                        PlayerPrefs.DeleteKey("Email");
+                        PlayerPrefs.DeleteKey("Password");
+                        PlayerPrefs.SetInt("RememberMe", 0);
+                    }
+                    PlayerPrefs.Save();
+
+                    // Get other user info from server and save in PlayerPrefs
                     yield return StartCoroutine(HttpService.Get_MeUser(_accessToken));
                     _userId = HttpService.GetUserId();
                     _username = HttpService.GetUsername();
-                    _loginPanelManager.SetLoginPanelActive(false);
+                    PlayerPrefs.SetInt("UserId", _userId);
+                    PlayerPrefs.SetString("AccessToken", _accessToken);
                     _loginCanvas.SetActive(false);
-                    _mainSystem.SetActive(true);
+                    _avatarSelection.SetActive(true);
 
                 }
             }

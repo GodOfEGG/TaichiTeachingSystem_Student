@@ -8,7 +8,13 @@ namespace TaichiTeachingSystem{
         public class Indicators : MonoBehaviour
         {
             [SerializeField] private IndicatorPair[] _indicatorPairs;
-            // Start is called before the first frame update
+            
+            public void SetIndicatorBodyPart(Transform[] p_bodyPartList){
+                for(int i=0 ; i<_indicatorPairs.Length ; i++){
+                    _indicatorPairs[i].bodyPart = p_bodyPartList[i];
+                }
+            }
+
             public void SetIndicatorTransform(){
                 for(int i=0 ; i<_indicatorPairs.Length ; i++){
                     _indicatorPairs[i].SetTransform();
