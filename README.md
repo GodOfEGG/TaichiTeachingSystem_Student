@@ -15,7 +15,7 @@ Assets
 ├── Avatar                          # Our 4 custom User Avatar and default Mixamo Bot 
 ├── Font                            # Font for chinese
 ├── Images                          # Images for UI and carpet under avatar
-├── Material                        # Material For Carpet, UI, and indicators on the keypoints of user avatar (For Play Mode)
+├── Material                        # Material For Carpet, UI, and indicators on the joint of user avatar (For Play Mode)
 ├── Scenes                          
 ├── Scripts
 
@@ -39,15 +39,44 @@ Assets
 ```
 Script
 ├── TaichiTeachingSystem
-│   ├── Common                           # Some common structure and functions that used in both student system and teacher system(in other github repo)
-│   └── StudentSystem                    # For Student System Only
-|   │   |── HttpService                 # For Student System Only
-|   |   │   |── HttpService                 # For Student System Only
-|   |   │   └── HttpService                 # For Student System Only
-|   │   |── Manager                 # For Student System Only
-|   │   |── System                 # For Student System Only
-|   │   |── Tools                 # For Student System Only
-|   │   └── UI                 # For Student System Only
+│   ├── Common                              # Some common structure and functions that used in both student system and teacher system(in other github repo)
+│   └── StudentSystem                       # For Student System Only
+|   │   |── HttpService                     # For Http Related Scripts
+|   |   │   |── HttpService                 # Functions including upload, download and authentication
+|   |   │   |── Request                     # Some request structure
+|   |   │   └── Response                    # Some response structure
+|   │   |── Manager                         # Managers for the resources in the scene like avatars, indicator, login info
+|   |   │   |── AvatarManager               # For managing user avatar creation, position, actions, active (For regular version)
+|   |   │   |── AvatarManagerForDemo        # For managing user avatar creation, position, actions, active (For demo version)
+|   |   │   |── CoachManager                # For managing coach avatar creation, position, actions, active (For regular version)
+|   |   │   |── CoachManagerForDemo         # For managing coach avatar creation, position, actions, active (For demo version)
+|   |   │   |── IndicatorManager            # For managing indicator that shows avatar joints are modified by teacher or not
+|   |   │   └── LoginManager                # Managing login, account info
+|   │   |── System                          # Main scripts that control the main process
+|   |   │   |── DemoMode                    # Main script for demo (For demo version)
+|   |   │   |── PlayMode                    # Main script for play mode (For regular version)
+|   |   │   |── RecordMode                  # Main script for record mode (For regular version)
+|   |   │   └── StudentTaichiSystem         # Script that control the mode switch between play mode and record mode (For regular version)
+|   │   |── Tools                           # Other tools
+|   |   │   |── AvatarSelection             # For avatar selection in login scene (For regular version)
+|   |   │   |── AvatarSelectionForDemo      # For avatar selection in login scene (For demo version)
+|   |   │   |── FaceCamera                  # For name tag of each avatar to face the camera(XR rig)
+|   |   │   |── FloorFollow                 # For floor(carpet) under each avatar that follows the avatar movement
+|   |   │   |── Indicators                  # Structures of indicators
+|   |   │   |── ResetAvatar                 # For animator controller to reset the coach move when switching the start move or end move
+|   |   │   |── SceneLoader                 # Switch between LoginScene and MainScene
+|   |   │   |── SceneLoaderForDemo          # Switch between LoginSceneForDemo and MainSceneForDemo
+|   |   │   └── ShowPanelsButton            # Show or hide the UI panel
+|   │   └── UI                              # For controlling UI appearence, interactive, and transfering the info of UI 
+|   |   │   |── CoachPanelManager           # For Coach Panel in MainScene/MainSceneForDemo
+|   |   │   |── CreateUserPanelManager      # For create user account panel in LoginScene
+|   |   │   |── FramePanelManager           # For Frame Panel in MainScene
+|   |   │   |── IPPanelManager              # For IP Panel in LoginScene
+|   |   │   |── LoginPanelManager           # For Login Panel in LoginScene
+|   |   │   |── ModePanelManager            # For mode panel in MainScene/MainSceneForDemo
+|   |   │   |── PlayPanelManager            # For play mode panel in MainScene
+|   |   │   |── RecordPanelManager          # For record mode panel in MainScene
+|   |   │   └── StudentPanelManager         # For student avatar panel in MainScene/MainSceneForDemo
 ```
 
 ## Scene Hierarchy
@@ -85,10 +114,9 @@ Script
 │   |   |   ├── Play                     # The Play Button               
 │   |   ├── LogoutButton
 │   |   ├── ShowPanelButton              # The button that show and hide Panels
-│   |   └── RaycastPlane                 # For XR Controller Interaction
-├── Mocopi                               # The mocopi receiver that specify the port and avatar 
-│   ├── OVRCameraRigInteraction
-│   └── Passthrough
+│   |   └── RaycastPlane                 # Plane for XR Controller Interaction
+├── Mocopi                               
+│   └── MocopiSimpleReceiver             # The mocopi receiver that specify the port and avatar 
 ├── XR                                   # Standard XR Rig with Passthrough
 │   ├── OVRCameraRigInteraction
 │   └── Passthrough
@@ -102,6 +130,13 @@ Script
 ├── XR                                   # Standard XR Rig with Passthrough
 │   ├── OVRCameraRigInteraction
 │   └── Passthrough
+├── Login                                
+│   ├── Canvas                           
+│   |   ├── Panels                       
+│   |   |   ├── LoginPanel               
+│   |   |   ├── CreateUserPanel
+│   |   |   └── IPPanel
+│   |   └── RaycastPlane                 # Plane for XR Controller Interaction
 ├── AvatarSelection                      # For Selecting the User Avatar
 │   ├── Plateform                        # The platform under Avatar
 │   ├── XRAvatar_f_01                    # The four user avatar options
@@ -116,7 +151,9 @@ Script
 ### MainScene
 ```
 ├── Directional Light
-├── DemoMode                             # The main object that control the process
+├── StudentTaichiSystem                  # Main script that control the process => switch between play mode and record mode
+│   ├── RecordMode                       # Main script that control record mode
+│   └── PlayMode                         # Main script thta control play mode
 ├── AvatarManager                        # Manage Avatars
 │   ├── Avatars                          # The user Avatars and coach Avatars
 │   ├── AvatarPos                        # Position of each avatars 
@@ -124,16 +161,27 @@ Script
 │   └── AvatarNameTag                    # The name tag of each avatar(for runtime creation)
 ├── UI
 │   ├── Canvas                           
-│   |   ├── Panels                       
+│   |   ├── Panels
+│   |   |   ├── FramePanel                   
 │   |   |   ├── CoachPanel
-│   |   |   ├── StudentPanel 
-│   |   |   ├── Play                     # The Play Button               
+│   |   |   ├── StudentPanel
+│   |   |   ├── ModePanel
+│   |   |   ├── RecordPanel
+│   |   |   └── PlayPanel           
 │   |   ├── LogoutButton
 │   |   ├── ShowPanelButton              # The button that show and hide Panels
 │   |   └── RaycastPlane                 # For XR Controller Interaction
-├── Mocopi                               # The mocopi receiver that specify the port and avatar 
-│   ├── OVRCameraRigInteraction
-│   └── Passthrough
+├── IndicatorManager                     # Manager the indicators in play mode that shows the modified joints 
+│   ├── OriginIndicatorList              # The indicators on the origin avatars(avatars with original move)
+│   |   ├── Indicators_Front
+│   |   ├── Indicators_Left
+│   |   ├── ......
+│   └── ModifyIndicatorList              # The indicators on the modify avatars(avatars with modified move)
+│   |   ├── Indicators_Front
+│   |   ├── Indicators_Left
+│   |   ├── ......
+├── Mocopi                               
+│   └── MocopiSimpleReceiver             # The mocopi receiver that specify the port and avatar 
 ├── XR                                   # Standard XR Rig with Passthrough
 │   ├── OVRCameraRigInteraction
 │   └── Passthrough

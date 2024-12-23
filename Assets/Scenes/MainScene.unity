@@ -1660,7 +1660,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 372800286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaichiTeachingSystem.StudentSystem.CoachManager,
           Assembly-CSharp
         m_MethodName: SetTaichiMoveClass
@@ -8321,7 +8321,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 372800286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaichiTeachingSystem.StudentSystem.CoachManager,
           Assembly-CSharp
         m_MethodName: SetTaichiEndMove
@@ -11533,102 +11533,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372078490}
   m_CullTransparentMesh: 1
---- !u!1 &372800284
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 372800285}
-  - component: {fileID: 372800286}
-  m_Layer: 0
-  m_Name: CoachManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &372800285
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372800284}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 1.1502669, y: 0.0042768717, z: -4.634381}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &372800286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372800284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6712bb435a9005049be2a1dbe53dd2ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coachPanelManager: {fileID: 1397233706}
-  _framePanelManager: {fileID: 1901988115}
-  _coachAvatars: {fileID: 744318741}
-  _taichi13Controller: {fileID: 9100000, guid: 5bc10f1740bb144458aac774c1190e4f, type: 2}
-  _taichi24Controller: {fileID: 9100000, guid: b119d595249ed4e43a776ceb82d197cb, type: 2}
-  _taichiMoveClassInfoList:
-  - className: "\u592A\u697516\u5F0F"
-    moveNum: 16
-    moveName:
-    - "\u592A\u6975\u8D77\u52E2"
-    - "\u5206\u52C1\u96F2\u624B"
-    - "\u5DE6\u53F3\u659C\u98DB"
-    - "\u652C\u96C0\u5C3E"
-    - "\u7FFB\u8EAB\u55AE\u97AD"
-    - "\u63D0\u624B\u4E0A\u52E2"
-    - "\u767D\u9DB4\u4EAE\u7FC5"
-    - "\u5DE6\u645F\u819D\u62D7\u6B65"
-    - "\u624B\u63EE\u7435\u7436"
-    - "\u5DE6\u645F\u819D\u62D7\u6B65"
-    - "\u53F3\u645F\u819D\u62D7\u6B65"
-    - "\u5DE6\u645F\u819D\u62D7\u6B65"
-    - "\u624B\u63EE\u7435\u7436"
-    - "\u4E0A\u6B65\u642C\u6514\u6376"
-    - "\u5982\u5C01\u4F3C\u9589"
-    - "\u5341\u5B57\u624B"
-  - className: "\u592A\u697524\u5F0F"
-    moveNum: 24
-    moveName:
-    - "\u592A\u6975\u8D77\u52E2"
-    - "\u5DE6\u53F3\u91CE\u99AC\u5206\u9B03"
-    - "\u767D\u9DB4\u4EAE\u7FC5"
-    - "\u5DE6\u53F3\u645F\u819D\u62D7\u6B65"
-    - "\u624B\u63EE\u7435\u7436"
-    - "\u5DE6\u53F3\u5012\u6372\u80B1"
-    - "\u5DE6\u652C\u96C0\u5C3E"
-    - "\u53F3\u652C\u96C0\u5C3E"
-    - "\u55AE\u97AD"
-    - "\u96F2\u624B"
-    - "\u55AE\u97AD"
-    - "\u9AD8\u63A2\u99AC"
-    - "\u53F3\u8E6C\u8173"
-    - "\u96D9\u5CF0\u8CAB\u8033"
-    - "\u8F49\u8EAB\u5DE6\u8E6C\u8173"
-    - "\u5DE6\u4E0B\u52E2\u7368\u7ACB"
-    - "\u53F3\u4E0B\u52E2\u7368\u7ACB"
-    - "\u5DE6\u53F3\u7A7F\u68AD"
-    - "\u6D77\u5E95\u91DD"
-    - "\u9583\u901A\u81C2"
-    - "\u8F49\u8EAB\u642C\u6514\u6376"
-    - "\u5982\u5C01\u4F3C\u9589"
-    - "\u5341\u5B57\u624B"
-    - "\u6536\u52E2"
 --- !u!1 &374337802
 GameObject:
   m_ObjectHideFlags: 0
@@ -14994,7 +14898,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 372800286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaichiTeachingSystem.StudentSystem.CoachManager,
           Assembly-CSharp
         m_MethodName: SetCoachActive
@@ -21450,112 +21354,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701665885}
   m_CullTransparentMesh: 1
---- !u!1 &703758228
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 703758232}
-  - component: {fileID: 703758231}
-  - component: {fileID: 703758230}
-  - component: {fileID: 703758229}
-  m_Layer: 0
-  m_Name: Plane
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!64 &703758229
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703758228}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &703758230
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703758228}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 5561349426305759274, guid: ab3a79eba4de4be0ad5fead9fb858190, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &703758231
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703758228}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &703758232
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703758228}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &714057237
 GameObject:
   m_ObjectHideFlags: 0
@@ -21639,7 +21437,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 372800286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaichiTeachingSystem.StudentSystem.CoachManager,
           Assembly-CSharp
         m_MethodName: SetTaichiStartMove
@@ -24815,7 +24613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 840343352}
   m_Layer: 0
-  m_Name: Play_ModifyIndicatorList
+  m_Name: ModifyIndicatorList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25305,7 +25103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 372800286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaichiTeachingSystem.StudentSystem.CoachManager,
           Assembly-CSharp
         m_MethodName: SetTaichiMoveClass
@@ -32232,7 +32030,7 @@ MonoBehaviour:
   _framePanelManager: {fileID: 1901988115}
   _recordPanelManager: {fileID: 1543178913}
   _studentPanelManager: {fileID: 1160120982}
-  _coachManager: {fileID: 372800286}
+  _coachManager: {fileID: 1141367423}
   _mocopiSimpleReceiver: {fileID: 955374384}
 --- !u!1 &1096064886
 GameObject:
@@ -34433,6 +34231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141367421}
   - component: {fileID: 1141367422}
+  - component: {fileID: 1141367423}
   m_Layer: 0
   m_Name: AvatarManager
   m_TagString: Untagged
@@ -34514,6 +34313,70 @@ MonoBehaviour:
   - {fileID: 1058550096}
   - {fileID: 2017618070}
   _play_modifyNameTag: {fileID: 1489580079}
+--- !u!114 &1141367423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141367420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6712bb435a9005049be2a1dbe53dd2ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coachPanelManager: {fileID: 1397233706}
+  _framePanelManager: {fileID: 1901988115}
+  _coachAvatars: {fileID: 744318741}
+  _taichi13Controller: {fileID: 9100000, guid: 5bc10f1740bb144458aac774c1190e4f, type: 2}
+  _taichi24Controller: {fileID: 9100000, guid: b119d595249ed4e43a776ceb82d197cb, type: 2}
+  _taichiMoveClassInfoList:
+  - className: "\u592A\u697516\u5F0F"
+    moveNum: 16
+    moveName:
+    - "\u592A\u6975\u8D77\u52E2"
+    - "\u5206\u52C1\u96F2\u624B"
+    - "\u5DE6\u53F3\u659C\u98DB"
+    - "\u652C\u96C0\u5C3E"
+    - "\u7FFB\u8EAB\u55AE\u97AD"
+    - "\u63D0\u624B\u4E0A\u52E2"
+    - "\u767D\u9DB4\u4EAE\u7FC5"
+    - "\u5DE6\u645F\u819D\u62D7\u6B65"
+    - "\u624B\u63EE\u7435\u7436"
+    - "\u5DE6\u645F\u819D\u62D7\u6B65"
+    - "\u53F3\u645F\u819D\u62D7\u6B65"
+    - "\u5DE6\u645F\u819D\u62D7\u6B65"
+    - "\u624B\u63EE\u7435\u7436"
+    - "\u4E0A\u6B65\u642C\u6514\u6376"
+    - "\u5982\u5C01\u4F3C\u9589"
+    - "\u5341\u5B57\u624B"
+  - className: "\u592A\u697524\u5F0F"
+    moveNum: 24
+    moveName:
+    - "\u592A\u6975\u8D77\u52E2"
+    - "\u5DE6\u53F3\u91CE\u99AC\u5206\u9B03"
+    - "\u767D\u9DB4\u4EAE\u7FC5"
+    - "\u5DE6\u53F3\u645F\u819D\u62D7\u6B65"
+    - "\u624B\u63EE\u7435\u7436"
+    - "\u5DE6\u53F3\u5012\u6372\u80B1"
+    - "\u5DE6\u652C\u96C0\u5C3E"
+    - "\u53F3\u652C\u96C0\u5C3E"
+    - "\u55AE\u97AD"
+    - "\u96F2\u624B"
+    - "\u55AE\u97AD"
+    - "\u9AD8\u63A2\u99AC"
+    - "\u53F3\u8E6C\u8173"
+    - "\u96D9\u5CF0\u8CAB\u8033"
+    - "\u8F49\u8EAB\u5DE6\u8E6C\u8173"
+    - "\u5DE6\u4E0B\u52E2\u7368\u7ACB"
+    - "\u53F3\u4E0B\u52E2\u7368\u7ACB"
+    - "\u5DE6\u53F3\u7A7F\u68AD"
+    - "\u6D77\u5E95\u91DD"
+    - "\u9583\u901A\u81C2"
+    - "\u8F49\u8EAB\u642C\u6514\u6376"
+    - "\u5982\u5C01\u4F3C\u9589"
+    - "\u5341\u5B57\u624B"
+    - "\u6536\u52E2"
 --- !u!1 &1151009121
 GameObject:
   m_ObjectHideFlags: 0
@@ -38846,7 +38709,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 372800286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaichiTeachingSystem.StudentSystem.CoachManager,
           Assembly-CSharp
         m_MethodName: SetTaichiStartMove
@@ -42450,7 +42313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378321235}
   m_Layer: 0
-  m_Name: Play_OriginIndicatorList
+  m_Name: OriginIndicatorList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47114,7 +46977,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 372800286}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TaichiTeachingSystem.StudentSystem.CoachManager,
           Assembly-CSharp
         m_MethodName: SetTaichiEndMove
@@ -50218,7 +50081,7 @@ MonoBehaviour:
   _indicatorManager: {fileID: 1733196701}
   _framePanelManager: {fileID: 1901988115}
   _playPanelManager: {fileID: 1788038054}
-  _coachManager: {fileID: 372800286}
+  _coachManager: {fileID: 1141367423}
 --- !u!1 &1586764904
 GameObject:
   m_ObjectHideFlags: 0
@@ -68142,13 +68005,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 203844589}
-  - {fileID: 703758232}
-  - {fileID: 357460401}
   - {fileID: 49543826}
   - {fileID: 1141367421}
-  - {fileID: 372800285}
   - {fileID: 522586995}
   - {fileID: 1733196702}
   - {fileID: 200498683}
   - {fileID: 1811582640}
   - {fileID: 2032692652}
+  - {fileID: 357460401}
