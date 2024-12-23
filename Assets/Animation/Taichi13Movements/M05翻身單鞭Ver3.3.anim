@@ -105415,7 +105415,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 19.033342
+    m_StopTime: 19.03334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -209648,67 +209648,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.008333334
-    functionName: coach_direction05
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.041666668
-    functionName: RepeatOrNotSingle
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 4
-    messageOptions: 0
-  - time: 0.16666667
-    functionName: playVoiceHint
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: dda36cccb3cd2e541a6de033e1732df8, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.33333334
-    functionName: playVoiceHint
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 8f5bd0605bf2f1d43abe70c26cf49984, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5
-    functionName: playVoiceHint
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 1295c2b729d9ef84aa4d9eff49b07fd6, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 5.6916666
-    functionName: playVoiceHint
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 5b79427d84f10e7438bb3cf346917c53, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 9.058333
-    functionName: playVoiceHint
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 95bd0c43bcc1f4b4a8666c1d8a460cd4, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 15.4
-    functionName: playVoiceHint
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 23c06050b257a15438d92e72d67d3153, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 18.908333
-    functionName: justWait
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

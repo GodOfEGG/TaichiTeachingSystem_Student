@@ -5,6 +5,17 @@ No specific request, but only test on 2022.3.4, 2022.3.22
 
 ## Installation
 
+1. Download github repo
+    ```
+    git clone https://github.com/GodOfEGG/TaichiTeachingSystem_Student.git
+    ```
+
+2. Open unity hub -> Projects -> Add -> Add project from disk -> select the github repo
+
+3. After the unity editor is open, click File -> Build Settings -> Android -> Install with Unity Hub (if "No Android module loaded") -> Restart the editor and back to Build 
+Setting -> Switch Platform
+
+4. 
 ## Assets Hierarchy
 ```
 Assets
@@ -13,7 +24,7 @@ Assets
 ├── Animation                       # Animation for Taichi and UI Button
 ├── Animator Controller             # Animator Controller For Taichi 16 Move and 24 Move
 ├── Avatar                          # Our 4 custom User Avatar and default Mixamo Bot 
-├── Font                            # Font for chinese
+├── Font                            # Font for chinese (not for all the chinese character, but only the characters specified in the font asset )
 ├── Images                          # Images for UI and carpet under avatar
 ├── Material                        # Material For Carpet, UI, and indicators on the joint of user avatar (For Play Mode)
 ├── Scenes                          

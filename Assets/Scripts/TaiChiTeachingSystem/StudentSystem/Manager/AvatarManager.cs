@@ -126,7 +126,7 @@ namespace TaichiTeachingSystem{
             // Show or Hide Record Avatars
             public void EnterRecordMode(){
                 _PrepareRecordAvatars();
-                _SetAvatarsPosition(_recordAvatars, 1f, 5f, 4f);
+                _SetAvatarsPosition(_recordAvatars, 1f, 4.5f, 3.5f);
                 _recordAvatars.SetActive(true);
                 _play_originAvatars.SetActive(false);
                 _play_modifyAvatars.SetActive(false);
