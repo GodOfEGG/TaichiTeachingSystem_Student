@@ -1,7 +1,7 @@
 # TaichiTeachingSystem_Student
 
 ## Unity Editor Version
-No specific request, but only test on 2022.3.4, 2022.3.22
+No specific request, but only test on 2022.3.4, 2022.3.22, 2022.3.16
 
 ## Installation
 
