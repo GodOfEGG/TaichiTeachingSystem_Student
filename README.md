@@ -204,5 +204,5 @@ Script
 1. Use type C cable to connect Quest 3 to PC (有傳輸速度要求，ipad充電線不行，可以用quest3附帶的線配合USB轉接頭，也可以用5Gbps type C to USB傳輸線)
 2. Put on Quest 3 helmet, it should pop out a notification "Allow USB Debugging", click "allow". (If you didn't see the notification, try plug out and re-plug in the type C cable )
 3. Click file -> Build Settings ->  Android -> Run Device -> "Oculus Quest 3" (click "Refresh" and the option should appear)
-4. Click "Build and Run" to build and run the project in quest 3
-5. For regular version, choose "Scenes/LoginScene   0" and "Scenes/MainScene   1" in the "Scenes in Build" windows in "Build Settings". For demo version, choose "Scenes/LoginSceneForDemo    0" and "Scenes/MainSceneForDemo    1".
+4. For regular version, choose "Scenes/LoginScene   0" and "Scenes/MainScene   1" in the "Scenes in Build" windows in "Build Settings". For demo version, choose "Scenes/LoginSceneForDemo    0" and "Scenes/MainSceneForDemo    1".
+5. Click "Build and Run" to build and run the project in quest 3
