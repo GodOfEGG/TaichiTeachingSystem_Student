@@ -12,10 +12,10 @@ No specific request, but only test on 2022.3.4, 2022.3.22
 
 2. Open unity hub -> Projects -> Add -> Add project from disk -> select the github repo
 
-3. After the unity editor is open, click File -> Build Settings -> Android -> Install with Unity Hub (if "No Android module loaded") -> Restart the editor and back to Build 
-Setting -> Switch Platform
+3. After the unity editor is open, click File -> Build Settings -> Android -> Install with Unity Hub (if "No Android module loaded") -> Restart the editor and back to Build Settings -> Switch Platform
 
-4. 
+4. Now it's ready to run
+
 ## Assets Hierarchy
 ```
 Assets
@@ -201,3 +201,8 @@ Script
 ```
 
 ## Build
+1. Use type C cable to connect Quest 3 to PC (有傳輸速度要求，ipad充電線不行，可以用quest3附帶的線配合USB轉接頭，也可以用5Gbps type C to USB傳輸線)
+2. Put on Quest 3 helmet, it should pop out a notification "Allow USB Debugging", click "allow". (If you didn't see the notification, try plug out and re-plug in the type C cable )
+3. Click file -> Build Settings ->  Android -> Run Device -> "Oculus Quest 3" (click "Refresh" and the option should appear)
+4. Click "Build and Run" to build and run the project in quest 3
+5. For regular version, choose "Scenes/LoginScene   0" and "Scenes/MainScene   1" in the "Scenes in Build" windows in "Build Settings". For demo version, choose "Scenes/LoginSceneForDemo    0" and "Scenes/MainSceneForDemo    1".
