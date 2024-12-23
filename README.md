@@ -27,7 +27,11 @@ Assets
 ├── Font                            # Font for chinese (not for all the chinese character, but only the characters specified in the font asset )
 ├── Images                          # Images for UI and carpet under avatar
 ├── Material                        # Material For Carpet, UI, and indicators on the joint of user avatar (For Play Mode)
-├── Scenes                          
+├── Scenes
+│   ├── LoginScene                  # Login scene of regular version (include login step and choose avatar)   
+│   ├── LoginSceneForDemo           # Login scene of demo version (only choose avatar)
+│   ├── MainScene                   # Main App Scene of regular version (include more UI and Record Mode/ Play Mode) 
+│   ├── MainSceneForDemo            # Main App Scene of demo version (only demo mode)                     
 ├── Scripts
 
 #### Default or comes with installed Packages
@@ -51,6 +55,7 @@ Assets
 Script
 ├── TaichiTeachingSystem
 │   ├── Common                              # Some common structure and functions that used in both student system and teacher system(in other github repo)
+
 │   └── StudentSystem                       # For Student System Only
 |   │   |── HttpService                     # For Http Related Scripts
 |   |   │   |── HttpService                 # Functions including upload, download and authentication
@@ -206,3 +211,4 @@ Script
 3. Click file -> Build Settings ->  Android -> Run Device -> "Oculus Quest 3" (click "Refresh" and the option should appear)
 4. For regular version, choose "Scenes/LoginScene   0" and "Scenes/MainScene   1" in the "Scenes in Build" windows in "Build Settings". For demo version, choose "Scenes/LoginSceneForDemo    0" and "Scenes/MainSceneForDemo    1".
 5. Click "Build and Run" to build and run the project in quest 3
+6. There exists a shader error that happens on the shader of the 4 custom avatars, so the build would fail. Just ignore the error and click "Build And Run" one more time, this time the build should success. (I've tried serveral ways to fix this error but none of them works. But the error doesn't affact the process, it only reduces the quality of the avatar's clothes. )
