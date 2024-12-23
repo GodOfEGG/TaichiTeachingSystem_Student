@@ -55,7 +55,8 @@ Assets
 Script
 ├── TaichiTeachingSystem
 │   ├── Common                              # Some common structure and functions that used in both student system and teacher system(in other github repo)
-
+|   │   |── HttpTools                       # Some tools for HttpService
+|   │   |── MotionData                      # The Motion Data that is uploaded/downloaded to/from the server
 │   └── StudentSystem                       # For Student System Only
 |   │   |── HttpService                     # For Http Related Scripts
 |   |   │   |── HttpService                 # Functions including upload, download and authentication
