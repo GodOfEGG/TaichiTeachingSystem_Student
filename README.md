@@ -213,3 +213,6 @@ Script
 4. For regular version, choose "Scenes/LoginScene   0" and "Scenes/MainScene   1" in the "Scenes in Build" windows in "Build Settings". For demo version, choose "Scenes/LoginSceneForDemo    0" and "Scenes/MainSceneForDemo    1".
 5. Click "Build and Run" to build and run the project in quest 3
 6. There exists a shader error that happens on the shader of the 4 custom avatars, so the build would fail. Just ignore the error and click "Build And Run" one more time, this time the build should success. (I've tried serveral ways to fix this error but none of them works. But the error doesn't affact the process, it only reduces the quality of the avatar's clothes. )
+
+## Known Bug
+When running the program in unity editor with Quest 3 (using an app called "Meta Quest Link" to connect quest 3 to PC), if you make modification to some script variables in the editor inspector, and didn't make any change to script(so it won't recompile), sometimes an "NullReferenceException" would happens on "OVRCameraRig" or "OVROverlay". This is probably the problem of Meta Quest Link. Change something(e.g. print("1234");) in the script to trigger recompile would solve the problem. Also, if you didn't use Meta Quest Link and directly build the app into quest 3, the error won't happen.
