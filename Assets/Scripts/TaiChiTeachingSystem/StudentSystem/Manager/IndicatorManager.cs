@@ -36,6 +36,9 @@ namespace TaichiTeachingSystem{
                 HumanBodyBones.LeftFoot
             };
 
+            /////////////////////////////////////////////////////////////////
+            ////////// Map the indicator to each body part///////////////////
+            /////////////////////////////////////////////////////////////////
             public void SetIndicatorsBodyPart(){
                 // play origin indicators
                 for(int i=0 ; i<_play_originIndicatorList.Length ; i++){
@@ -55,6 +58,10 @@ namespace TaichiTeachingSystem{
                     _play_modifyIndicatorList[i].SetIndicatorBodyPart(bodyParts);
                 }
             }
+
+            //////////////////////////////////////////////////////////////////////////////////////////
+            ////////// Set the indicator to the position of corresponding body part///////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////
             public void SetIndicatorTransform(){
                 for(int i=0 ; i<_play_originIndicatorList.Length ; i++){
                     _play_originIndicatorList[i].SetIndicatorTransform();
@@ -64,6 +71,9 @@ namespace TaichiTeachingSystem{
                 }
             }
 
+            //////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////  Activate or deactivate indicators  ///////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////
             public void SetIndicatorActive(bool p_active, bool p_singleAvatarMode, bool p_singleAvatarOriginPose){
                 if(p_singleAvatarMode){
                     for(int i=0 ; i<_play_originIndicatorList.Length ; i++){
@@ -83,6 +93,10 @@ namespace TaichiTeachingSystem{
                 }
             }
 
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////// Set the material of each indiators based on the corresponding body part is modified or not //////////////////
+            ////////// Original: Green,         Modified: Orange                                                  //////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             public void SetIndicatorMaterial(List<AvatarBodyPartList> p_avatarBodyPartList){
                 for(int i=0 ; i<_play_originIndicatorList.Length ; i++){
                     _play_originIndicatorList[i].SetIndicatorMaterial(p_avatarBodyPartList, _originMaterial, _modifyMaterial);
@@ -91,6 +105,10 @@ namespace TaichiTeachingSystem{
                     _play_modifyIndicatorList[i].SetIndicatorMaterial(p_avatarBodyPartList, _originMaterial, _modifyMaterial);
                 }
             }
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////// Reset the material of indicator to original(green)  ////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             public void ResetIndicatorMaterial(){
                 for(int i=0 ; i<_play_originIndicatorList.Length ; i++){
                     _play_originIndicatorList[i].ResetIndicatorMaterial( _originMaterial);

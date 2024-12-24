@@ -18,6 +18,10 @@ namespace TaichiTeachingSystem{
             private List<Animator> _recordAnimators;
             private List<HumanPoseHandler> _recordPoseHandlers;
             private HumanPose _recordPose;
+
+
+            // This part is for single student(user) avatar mode that make the avatar follows the camera(MR helmet)
+            // Not used in the final version of demo
             [SerializeField] private Transform _cameraTransform;
             public float radius = 4.03f;
             public float movementDuration = 0.8f;
@@ -28,11 +32,11 @@ namespace TaichiTeachingSystem{
             private Vector3 _targetPosition;
             private Vector3 _prevDirection;
             private Vector3 _currentVelocity = Vector3.zero;
+
+            // End of this part
             
 
-            /////////////////////////////////////////////////////////////////
-            /////////////////////   Common   ////////////////////////////////
-            /////////////////////////////////////////////////////////////////
+            
             private void _SetAvatarsPosition(GameObject p_avatars, float p_shiftX1, float p_shiftX2, float p_shiftX3){
                 // Set front and back avatar
                 Vector3 pos = p_avatars.transform.GetChild(0).localPosition;
@@ -59,10 +63,8 @@ namespace TaichiTeachingSystem{
                 p_avatars.transform.GetChild(7).localPosition = new Vector3(p_shiftX2, pos.y, pos.z);
             }
             
-            /////////////////////////////////////////////////////////////////
-            ////////////   Record Mode Avatars   ////////////////////////////////
-            /////////////////////////////////////////////////////////////////
             
+            // Create student(user) avatar  in runtime
             public void InstantiateRecordModeAvatars(){
                 int avatarId = PlayerPrefs.GetInt("AvatarId");
                 // Record Avatars
@@ -80,9 +82,12 @@ namespace TaichiTeachingSystem{
                 }
             }
             
+            // For getting the front student avatar in record mode (since mocopi data is sent to the front avatar)
             public GameObject GetFirstRecordAvatar(){
                 return _recordAvatars.transform.GetChild(0).GetChild(0).gameObject;
             }
+
+            // Initialize animators and poseHandlers for each student avatar
             private void _PrepareRecordAvatars(){
                 // For record Avatars
                 _recordAnimators = new List<Animator>();
@@ -93,7 +98,8 @@ namespace TaichiTeachingSystem{
                 }
                 _recordPose = new HumanPose();
             }
-                
+            
+
             public void GetRecordMuscleValue(ref MuscleValues tmpValue){
                 tmpValue.muscleValues = new float[_recordPose.muscles.Length];
                 _recordPoseHandlers[0].GetHumanPose(ref _recordPose);
@@ -122,6 +128,26 @@ namespace TaichiTeachingSystem{
                     _recordPoseHandlers[ID].SetHumanPose(ref _recordPose);
                 }
             }
+
+            // Set Student Avatar Number in record mode (0, 1, 8)
+            public void SetRecordAvatarNumber(float p_studentAvatarMode){
+                // 0 record avatar
+                if(p_studentAvatarMode == 0){
+                    for(int i=0 ; i<_recordAvatars.transform.childCount ; i++)
+                        _recordAvatars.transform.GetChild(i).gameObject.SetActive(false);
+                }
+                // 8 record avatar
+                else{
+                    _recordAvatars.transform.GetChild(0).position = _recordPos[0].position;
+                    for(int i=0 ; i<_recordAvatars.transform.childCount ; i++)
+                        _recordAvatars.transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////   This part is for single student(user) avatar mode that make the avatar follows the camera(MR helmet) /////
+            //////////////////////////////////   Not used in the final version of demo //////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
             // Make the avatar follow MR helmet in single student avatar mode
             public void MakeRecordAvatarFollowCamera(){
@@ -161,19 +187,7 @@ namespace TaichiTeachingSystem{
                 _targetPosition.y = _height; //高度不變
             }
 
-            public void SetRecordAvatarNumber(float p_studentAvatarMode){
-                // 0 record avatar
-                if(p_studentAvatarMode == 0){
-                    for(int i=0 ; i<_recordAvatars.transform.childCount ; i++)
-                        _recordAvatars.transform.GetChild(i).gameObject.SetActive(false);
-                }
-                // 8 record avatar
-                else{
-                    _recordAvatars.transform.GetChild(0).position = _recordPos[0].position;
-                    for(int i=0 ; i<_recordAvatars.transform.childCount ; i++)
-                        _recordAvatars.transform.GetChild(i).gameObject.SetActive(true);
-                }
-            }
+            
         }
     }    
 }

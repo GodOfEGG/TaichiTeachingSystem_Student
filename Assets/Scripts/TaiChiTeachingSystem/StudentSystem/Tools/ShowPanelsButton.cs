@@ -8,14 +8,14 @@ namespace TaichiTeachingSystem{
     {
         [SerializeField] private GameObject _panels;
         [SerializeField] private Image _buttonImage;
-        private bool _showPaanels;
+        private bool _showPanels;
         void Start(){
-            _showPaanels = true;
+            _showPanels = true;
         }
-        
+        // Show or hide UI Panels
         public void SwitchShowPanels(){
-            _showPaanels = !_showPaanels;
-            _panels.SetActive(_showPaanels);
+            _showPanels = !_showPanels;
+            _panels.SetActive(_showPanels);
             _buttonImage.transform.Rotate(0, 0, 180);
         }
     }

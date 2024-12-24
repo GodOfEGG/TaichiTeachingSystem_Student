@@ -1,17 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using RuntimeHandle;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
-using UnityEngine.Assertions;
-using UnityEngine.XR;
 
 namespace TaichiTeachingSystem
 {
-   
+
+    // Motion Data Structure for original move(not modified)
     [Serializable]
     public class MuscleValues
     {
@@ -19,6 +14,8 @@ namespace TaichiTeachingSystem
         public Quaternion rotation;
         public float[] muscleValues;
     }
+
+    // Used in ModifyValues, for checking which body part is modified by teacher 
     public enum AvatarBodyPartList{
         HIP,  // 0
         SPINE, // 1
@@ -44,7 +41,10 @@ namespace TaichiTeachingSystem
     }
 
 
-
+    // MotionData Structure for modified data
+    // Additional Data:
+    //                  frameID: the avatar move of which frame is modified
+    //                  modifiedBodyParts: which body part is modified, for indicator usage
     [Serializable]
     public class ModifyValues
     {

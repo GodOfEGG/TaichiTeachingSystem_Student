@@ -15,6 +15,7 @@ namespace TaichiTeachingSystem{
         {
             public static string base_url = "https://172.20.10.4:4433";
 
+            // Setting ip of the server
             public static void SetBaseUrl(string p_ip){
                 base_url = $"https://{p_ip}:4433";
             }
@@ -181,9 +182,9 @@ namespace TaichiTeachingSystem{
                 return _motionRecordList;
             }
 
-            ////////////////////////////////////////////////
-            //////////    Get Motion Data Load   ///////////
-            ////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+            //////////    Get Motion Data by filename   ///////////
+            ///////////////////////////////////////////////////////
             private static MotionData _motionData;
             public static IEnumerator Get_MotionDataLoad(string p_filename, string p_access_token)
             {
@@ -208,9 +209,9 @@ namespace TaichiTeachingSystem{
             public static MotionData GetMotionData(){
                 return _motionData;
             }
-            ////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
             ////////////    Post Record Motion Data    ////////////
-            ////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
             
             private static bool _uploadSuccess;
             public static IEnumerator Post_MotionDataNew(MotionData p_motionData, string p_access_token)

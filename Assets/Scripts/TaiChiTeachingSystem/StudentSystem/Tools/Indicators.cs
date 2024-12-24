@@ -9,18 +9,21 @@ namespace TaichiTeachingSystem{
         {
             [SerializeField] private IndicatorPair[] _indicatorPairs;
             
+            // Set the corresponding body part of the indicator
             public void SetIndicatorBodyPart(Transform[] p_bodyPartList){
                 for(int i=0 ; i<_indicatorPairs.Length ; i++){
                     _indicatorPairs[i].bodyPart = p_bodyPartList[i];
                 }
             }
 
+            // set the position of each indicator to its corresponding body part
             public void SetIndicatorTransform(){
                 for(int i=0 ; i<_indicatorPairs.Length ; i++){
                     _indicatorPairs[i].SetTransform();
                 }
             }
 
+            // Set the material of the indicator based on it is modified ot not(modified: orange, nmot modified: green)
             public void SetIndicatorMaterial(List<AvatarBodyPartList> p_avatarBodyPartList, Material p_originMaterial, Material p_modifyMaterial){
                 for(int i=0 ; i<_indicatorPairs.Length ; i++){
                     if(p_avatarBodyPartList.Contains(_indicatorPairs[i].bodyPartIndex)){
@@ -31,6 +34,8 @@ namespace TaichiTeachingSystem{
                     }
                 }
             }
+
+            // Reset the material to default(green) 
             public void ResetIndicatorMaterial(Material p_originMaterial){
                 for(int i=0 ; i<_indicatorPairs.Length ; i++){
                     _indicatorPairs[i].indicator.GetComponent<Renderer>().material = p_originMaterial;

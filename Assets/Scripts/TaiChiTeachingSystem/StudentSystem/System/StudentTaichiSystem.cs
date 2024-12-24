@@ -38,6 +38,9 @@ namespace TaichiTeachingSystem
                 }
             }
 
+            ////////////////////////////////////////////////////////////////////////////
+            //////////////   Switch between Record Move or Play Mode  //////////////////
+            ////////////////////////////////////////////////////////////////////////////
             public void SetMode(int p_modeChange){
                 _mode = (_mode + p_modeChange+2)%2;
                 _modePanelManager.SetModeText(_mode);
@@ -55,6 +58,10 @@ namespace TaichiTeachingSystem
                         break;
                 }
             }
+
+            ////////////////////////////////////////////////////////////
+            //////////////   Set FPS(Speed of move)  //////////////////
+            ///////////////////////////////////////////////////////////
             public void SetFPS(){
                 switch (_mode){
                     // Record Mode

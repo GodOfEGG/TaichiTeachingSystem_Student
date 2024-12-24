@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 namespace TaichiTeachingSystem{
     namespace StudentSystem{
+
+        // Switch to LoginScene or MainScene
         public class SceneLoader : MonoBehaviour
         {
             public void LoadMainScene(){

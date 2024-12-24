@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 namespace TaichiTeachingSystem
 {
+    // Some basic tools for data transfer between app and server
     public static class HttpTools
     {
         public static UnityWebRequest request_post(string api_url, string jsonString, string access_token = "")
