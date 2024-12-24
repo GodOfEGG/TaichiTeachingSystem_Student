@@ -12,6 +12,7 @@ namespace TaichiTeachingSystem{
             public List<string> modeName;
 
             public void SetModeText(int p_mode){
+                print(p_mode);
                 _modeText.text = modeName[p_mode];
             }
 
