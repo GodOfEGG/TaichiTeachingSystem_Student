@@ -23,10 +23,7 @@ namespace TaichiTeachingSystem{
                 _mocopiSimpleReceiver.AvatarSettings[0].MocopiAvatar = avatar.GetComponent<MocopiAvatar>();
                 _mocopiSimpleReceiver.enabled = true;
             }
-            //////////////////////////////////////////////////////
-            ////////////   For StudentTaichiSystem  //////////////
-            /////////////////////////////////////////////////////
-            
+
             private void Start(){
                 // Avatars
                 _avatarManager.EnterRecordMode();
@@ -53,7 +50,7 @@ namespace TaichiTeachingSystem{
 
             }
 
-        
+            // Change Student(user) avatar number (0, 8)
             public void SetStudentAvatarMode(int p_modeChange){
                 _studentAvatarMode = (_studentAvatarMode + p_modeChange + 2)%2;
                 _studentPanelManager.SetAvatarModeText(_studentAvatarMode);

@@ -18,6 +18,9 @@ namespace TaichiTeachingSystem{
             private List<Animator> _recordAnimators;
             private List<HumanPoseHandler> _recordPoseHandlers;
             private HumanPose _recordPose;
+            
+            
+            // This part is for single student(user) avatar mode that make the avatar follows the camera(MR helmet)
             [SerializeField] private Transform _cameraTransform;
             public float radius = 4.03f;
             public float movementDuration = 0.8f;
@@ -28,6 +31,8 @@ namespace TaichiTeachingSystem{
             private Vector3 _targetPosition;
             private Vector3 _prevDirection;
             private Vector3 _currentVelocity = Vector3.zero;
+
+            // End of this part
             
             
 
@@ -81,6 +86,7 @@ namespace TaichiTeachingSystem{
             ////////////   Record Mode Avatars   ////////////////////////////////
             /////////////////////////////////////////////////////////////////
             
+            // Create student(user) avatar  in runtime
             public void InstantiateRecordModeAvatars(){
                 int avatarId = PlayerPrefs.GetInt("AvatarId");
                 // Record Avatars
@@ -98,9 +104,12 @@ namespace TaichiTeachingSystem{
                 }
             }
             
+            // For getting the front student avatar in record mode (since mocopi data is sent to the front avatar)
             public GameObject GetFirstRecordAvatar(){
                 return _recordAvatars.transform.GetChild(0).GetChild(0).gameObject;
             }
+
+            // Initialize animators and poseHandlers for each student avatar
             private void _PrepareRecordAvatars(){
                 // For record Avatars
                 _recordAnimators = new List<Animator>();
@@ -123,7 +132,7 @@ namespace TaichiTeachingSystem{
                 tmpValue.rotation = _recordPose.bodyRotation;
             }
             
-            // Show or Hide Record Avatars
+            // Initialization when entering record mode, include data preparation, set position, and activate or deactivate objects
             public void EnterRecordMode(){
                 _PrepareRecordAvatars();
                 _SetAvatarsPosition(_recordAvatars, 1f, 4.5f, 3.5f);
@@ -181,6 +190,7 @@ namespace TaichiTeachingSystem{
                 _targetPosition.y = _height; //高度不變
             }
 
+            // Set Student Avatar Number in record mode (0, 1, 8)
             public void SetRecordAvatarNumber(float p_studentAvatarMode){
                 // 0 record avatar
                 if(p_studentAvatarMode == 0){
@@ -206,6 +216,7 @@ namespace TaichiTeachingSystem{
             ////////////   Play Mode Avatars   ////////////////////////////////
             /////////////////////////////////////////////////////////////////
             
+            // create user avatar in runtime
             public void InstantiatePlayModeAvatars(){
                 int avatarId = PlayerPrefs.GetInt("AvatarId");
 
@@ -238,6 +249,7 @@ namespace TaichiTeachingSystem{
                 }
             }
 
+            // Prepare animators and poseHandler for each student avatar
             public void _PreparePlayAvatars(){
                 // For origin Avatars
                 _play_originAnimators = new List<Animator>();
@@ -261,6 +273,7 @@ namespace TaichiTeachingSystem{
             }
                 
 
+            // Set student avatar pose according to motionData
             public void SetPlayModeAvatarPose(MuscleValues p_muscleValue, ModifyValues p_modifyValue){
                 //For origin avatars
                 for (int i = 0; i < _play_originPose.muscles.Length; ++i)
@@ -297,11 +310,13 @@ namespace TaichiTeachingSystem{
             }
 
             
+            // In single student avatar mode of play mode, switch the avatar pose between original pose and modified pose
             public void SetSingleAvatarPose(bool p_singleAvatarOriginPose){
                 _play_originAvatars.SetActive(p_singleAvatarOriginPose);
                 _play_modifyAvatars.SetActive(!p_singleAvatarOriginPose);
             }
 
+            // Initialization when entering play mode, include data preparation, set position, and activate or deactivate objects
             public void EnterPlayMode(bool p_singleAvatarMode, bool p_singleAvatarOriginPose){
                 _recordAvatars.SetActive(false);
                 if(p_singleAvatarMode){

@@ -106,14 +106,19 @@ namespace TaichiTeachingSystem{
                 _frameID += 1;
             }
 
+            ////////////////////////////////////////////////////////////
+            //////////////   Set FPS(Speed of move)  //////////////////
+            ///////////////////////////////////////////////////////////
             public void SetFPS(){
                 _FPS = _framePanelManager.GetFPS();
                 _fpsDeltaTime = 1/_FPS;
                 _coachManager.SetCoachSpeed();
             }
-            //////////////////////////////////////////////////////
-            //////////////   student Avatar Mode  ////////////////
-            /////////////////////////////////////////////////////            
+
+
+            ////////////////////////////////////////////////////////////////////////
+            //////////////   Set number of student Avatar(8, 1, 0)  ////////////////
+            ////////////////////////////////////////////////////////////////////////            
             public void SetStudentAvatarMode(int p_modeChange){
                 _studentAvatarMode = (_studentAvatarMode + p_modeChange + 3)%3;
                 _studentPanelManager.SetAvatarModeText(_studentAvatarMode);
@@ -125,8 +130,6 @@ namespace TaichiTeachingSystem{
             //////////////////////////////////////////////////////
             ////////////////   Record Button  //////////////////
             /////////////////////////////////////////////////////
-
-
             public void ChangeRecordingState(){
 
                 // Start Recording

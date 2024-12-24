@@ -31,6 +31,9 @@ namespace TaichiTeachingSystem{
             [SerializeField] private Toggle _modifyPoseToggle;
             
 
+            ////////////////////////////////////////////////////////////////////////////
+            /////////////  Set the dropdown of the motionData list /////////////////////
+            ////////////////////////////////////////////////////////////////////////////
             public void SetLoadModifiedDataPanelActive(bool p_active){
                 _loadModifiedDataPanel.SetActive(p_active);
             }
@@ -52,7 +55,9 @@ namespace TaichiTeachingSystem{
                 return filename;
             }
 
-
+            ///////////////////////////////////////////////
+            ///////////// Play Button /////////////////////
+            ///////////////////////////////////////////////
             public void SetPlayButton(bool p_onPlay){
                 _SetPlayButtonImage(p_onPlay);
                 _SetPlayButtonTooltip(p_onPlay);
@@ -72,6 +77,9 @@ namespace TaichiTeachingSystem{
                 _playButton.interactable = p_interactable;
             }
 
+            //////////////////////////////////////////////////////////////
+            ///////////// Single Avatar Mode Button /////////////////////
+            /////////////////////////////////////////////////////////////
             public void SetSingleAvatarModeButton(bool p_singleAvatarMode){
                 _SetAvatarNumberButtonImage(p_singleAvatarMode);
                 _SetAvatarNumberButtonTooltip(p_singleAvatarMode);
@@ -86,14 +94,25 @@ namespace TaichiTeachingSystem{
                 _avatarNumberButtonTooltipText.text = p_singleAvatarMode ? "Single Avatar" : "Duo Avatar";    
             }
 
+
+            ///////////////////////////////////////////////
+            ///////////// Play Panel /////////////////////
+            ///////////////////////////////////////////////
+
             public void SetPanelActive(bool p_active){
                 this.transform.gameObject.SetActive(p_active);
             }
 
-
+            ///////////////////////////////////////////////////
+            ///////////// Indicator Toggle /////////////////////
+            ///////////////////////////////////////////////////
             public bool GetIndicatorToggleIsOn(){
                 return _indicatorToggle.isOn;
             }
+
+            ///////////////////////////////////////////////////
+            ///////////// Avatar Pose Toggle /////////////////////
+            ///////////////////////////////////////////////////
             public bool GetOriginPoseToggleIsOn(){
                 return _originPoseToggle.isOn;
             }

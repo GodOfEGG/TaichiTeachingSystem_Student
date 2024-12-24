@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace TaichiTeachingSystem{
     namespace StudentSystem{
+
+        // Decide user avatar in LoginScene
         public class AvatarSelection : MonoBehaviour
         {
             private int _avatarId=0;

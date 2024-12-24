@@ -122,9 +122,9 @@ namespace TaichiTeachingSystem{
 
             }
 
-            //////////////////////////////////////////////////////
-            ////////////////   For UI Panels  //////////////////
-            /////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////
+            //////////////   Set FPS(Speed of move)  //////////////////
+            ///////////////////////////////////////////////////////////
                 
 
             public void SetFPS(){
@@ -135,6 +135,9 @@ namespace TaichiTeachingSystem{
             }
 
 
+            /////////////////////////////////////////////////////////////////
+            //////////////   Load motion data from server  //////////////////
+            ////////////////////////////////////////////////////////////////
             IEnumerator _SetModifiedFileDropdown(){
                 string accessToken = PlayerPrefs.GetString("AccessToken");
                 int userId = PlayerPrefs.GetInt("UserId");
@@ -180,6 +183,10 @@ namespace TaichiTeachingSystem{
                 _playPanelManager.SetLoadModifiedDataPanelActive(false);
                 
             }
+
+            /////////////////////////////////////////////////////////////////
+            //////////////////    Play / Stop    ///////////////////////////
+            ////////////////////////////////////////////////////////////////
             public void SwitchOnPlay(){
                 _onPlay = !_onPlay;
                 if(_onPlay){
@@ -202,6 +209,11 @@ namespace TaichiTeachingSystem{
                 
             }
 
+            ////////////////////////////////////////////////////////////////////////////////////////
+            ////    Single Avatar / Duo Avatar                                             /////////
+            ////    Single Avatar: Show one move at a time, original move or modified move /////////
+            ////    Duo Avatar: Show both move                                             ////////
+            ////////////////////////////////////////////////////////////////////////////////////////
             public void SwitchSingleAvatarMode(){
                 _singleAvatarMode = !_singleAvatarMode;
                 _avatarManager.EnterPlayMode(_singleAvatarMode, _playPanelManager.GetOriginPoseToggleIsOn());
@@ -212,12 +224,18 @@ namespace TaichiTeachingSystem{
                 _playPanelManager.SetSingleAvatarPoseToggleInteractable(_singleAvatarMode);
             }
             
-
+            ////////////////////////////////////////////////////////////////////////
+            //////////////////    Show/Hide indicator    ///////////////////////////
+            ///////////////////////////////////////////////////////////////////////
             public void SetIndicatorActive(){
                 _indicatorActive = _playPanelManager.GetIndicatorToggleIsOn();
                 _indicatorManager.SetIndicatorActive(_indicatorActive, _singleAvatarMode, _playPanelManager.GetOriginPoseToggleIsOn());
                 _indicatorManager.SetIndicatorTransform();
             }
+
+            ///////////////////////////////////////////////////////////////////////////////////////////
+            ///////   Switch between original move and modified move in single avatar mode   //////////
+            ///////////////////////////////////////////////////////////////////////////////////////////
             public void SetSingleAvatarPose(){
                 _avatarManager.SetSingleAvatarPose( _playPanelManager.GetOriginPoseToggleIsOn());
                 _indicatorManager.SetIndicatorActive(_indicatorActive, _singleAvatarMode, _playPanelManager.GetOriginPoseToggleIsOn());

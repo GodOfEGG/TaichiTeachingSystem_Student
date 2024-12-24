@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace TaichiTeachingSystem{
     namespace StudentSystem{
+        // For animator controller, that reset the position of corresponding avatar(coach avatar) if the {start move}/{end move}/{move class} is changed
         public class ResetAvatar : StateMachineBehaviour
         {
             // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

@@ -20,12 +20,6 @@ namespace TaichiTeachingSystem{
                 SetFPSText();
             }
 
-            // Update is called once per frame
-            void Update()
-            {
-                
-            }
-
             public void SetFrameNumberText(int p_frameNumber){
                 _frameNumberText.text = "Frame Number: " + p_frameNumber;
             }

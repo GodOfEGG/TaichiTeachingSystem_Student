@@ -26,6 +26,9 @@ namespace TaichiTeachingSystem{
                 SetServerIP();
             }
 
+            /////////////////////////////////////////////////////////////////
+            ////////// Remember the email and password //////////////////////
+            /////////////////////////////////////////////////////////////////
             private void _SetRememberMe(){
                 if (PlayerPrefs.HasKey("RememberMe") && PlayerPrefs.GetInt("RememberMe") == 1)
                 {
@@ -39,6 +42,9 @@ namespace TaichiTeachingSystem{
                 }
             }
 
+            /////////////////////////////////////////////////////////////////
+            ////////// Set Server IP ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
             public void SetServerIP(){
                 string serverIP = _ipPanelManager.GetIPInputField();
                 HttpService.SetBaseUrl(serverIP);
@@ -46,6 +52,9 @@ namespace TaichiTeachingSystem{
             }        
 
 
+            /////////////////////////////////////////////////////////////////
+            /////////////////     Login     /////////////////////////////////
+            /////////////////////////////////////////////////////////////////
             public void Login(){
                 StartCoroutine(_HandleLogin());
             }
@@ -86,6 +95,10 @@ namespace TaichiTeachingSystem{
 
                 }
             }
+
+            /////////////////////////////////////////////////////////////////
+            ///////////////    Create User Account   ////////////////////////
+            /////////////////////////////////////////////////////////////////
             public void CreateUser(){
                 StartCoroutine(_HandleCreateUser());
             }

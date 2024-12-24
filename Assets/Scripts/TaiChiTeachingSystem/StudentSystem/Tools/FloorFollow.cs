@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace TaichiTeachingSystem{
     namespace StudentSystem{
+
+        // Make the floor follows the avatar move, including position and texture(grid)
         public class FloorFollow : MonoBehaviour
         {
             [SerializeField] private Transform _rightFootTransform;

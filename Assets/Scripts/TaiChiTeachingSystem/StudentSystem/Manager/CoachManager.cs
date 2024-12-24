@@ -102,11 +102,19 @@ namespace TaichiTeachingSystem{
             }
 
             
+
+            //////////////////////////////////////////////////////////////////////
+            //////  Coach Initialization when entering record mode    ////////////
+            //////////////////////////////////////////////////////////////////////
             public void EnterRecordMode(){
                 RestartCoachMove();
                 SetCoachSpeed(1);
                 _SetCoachAvatarsPosition(-1f, 2.5f, 5.5f);
             }
+
+            //////////////////////////////////////////////////////////////////////
+            ////////  Coach Initialization when entering play mode    ////////////
+            //////////////////////////////////////////////////////////////////////
             public void EnterPlayMode(bool p_singleAvatarMode){
                 RestartCoachMove();
                 SetCoachSpeed(0);
@@ -116,6 +124,9 @@ namespace TaichiTeachingSystem{
                     _SetCoachAvatarsPosition(-1.5f, 6f, 6.5f);
             }
 
+            /////////////////////////////////////////////////////////////////////////
+            /////////////  Set Coach Speed, including Play/Stop  /////////////////////
+            //////////////////////////////////////////////////////////////////////////
             public void SetCoachSpeed(float p_speed = -1){ // p_speed = -1 => Get speed from frame Panel
                 if(p_speed == -1)
                     p_speed = _framePanelManager.GetSpeed();
@@ -125,6 +136,9 @@ namespace TaichiTeachingSystem{
                 }
             }
 
+            ///////////////////////////////////////////////////////
+            /////////////  Restart Coach Move /////////////////////
+            ///////////////////////////////////////////////////////
             public void RestartCoachMove(){
                 for(int i=0 ; i< _coachAvatars.transform.childCount ; i++){
                     _coachAnimator = _coachAvatars.transform.GetChild(i).GetChild(0).GetComponent<Animator>();
