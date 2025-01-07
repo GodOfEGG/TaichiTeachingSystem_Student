@@ -80,7 +80,7 @@ Script
 |   |   │   |── FaceCamera                  # For name tag of each avatar to face the camera(XR rig)
 |   |   │   |── FloorFollow                 # For floor(carpet) under each avatar that follows the avatar movement
 |   |   │   |── Indicators                  # Structures of indicators
-|   |   │   |── ResetAvatar                 # For animator controller to reset the coach position when switching the move class, avatar number or start move
+|   |   │   |── ResetAvatar                 # For animator controller to reset the coach position when switching the start move or end move
 |   |   │   |── SceneLoader                 # Switch between LoginScene and MainScene
 |   |   │   |── SceneLoaderForDemo          # Switch between LoginSceneForDemo and MainSceneForDemo
 |   |   │   └── ShowPanelsButton            # Show or hide the UI panel
